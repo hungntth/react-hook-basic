@@ -8,6 +8,9 @@ import PostList from './components/PostList';
 import Pagination from './components/Pagination';
 import queryString from 'query-string';
 import PostFiltersForm from './components/PostFiltersForm';
+import Clock from './components/Clock';
+import BetterClock from './components/BetterClock';
+import MagicBox from './components/MagicBox';
 
 function App() {
 
@@ -90,8 +93,15 @@ function App() {
     })
   }
 
+  const [showClock, setShowClock] = useState(true);
+
   return (
     <>
+      <MagicBox />
+      {showClock && <Clock />}
+      <BetterClock />
+      <button onClick={() => setShowClock(false)}>Hide clock</button>
+      <BetterClock />
       <h1>PostList</h1>
       <PostFiltersForm onSubmit={handleFiltersChange} />
       <PostList posts={postList} />
